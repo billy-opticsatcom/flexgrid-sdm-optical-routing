@@ -1,0 +1,52 @@
+# ---- MATLAB / Octave temporary and generated files ----
+*.asv
+*.m~
+*.autosave
+*.slxc
+*.mex*
+slprj/
+sccprj/
+codegen/
+resources/project/
+*.mlappinstall
+*.mltbx
+helpsearch*/
+octave-workspace
+octave-core
+
+# ---- Simulation outputs: never publish raw results ----
+*.mat
+*.fig
+out/
+logs/
+results/
+*.log
+*.csv
+*.txt
+
+# ---- Private material kept outside the public repository ----
+private/
+src/
+data/
+run_*.m
+setup_paths.m
+*.xlsx
+*.xls
+*.docx
+*.pdf
+CHANGES*.md
+CLAUDE.md
+DESIGN_DECISIONS.md
+PROGRESS_NOTE.md
+*_task.md
+
+# ---- Large media (animations) ----
+*.mp4
+*.gif
+
+# ---- OS and editor files ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

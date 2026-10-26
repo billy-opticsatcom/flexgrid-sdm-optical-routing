@@ -109,9 +109,10 @@ use five seeds per point with 95 % confidence intervals.
 - **Node dimensioning matters as much as routing.** With the *same* total OXC budget, a transit-aware
   allocation lowers bandwidth blocking by **about an order of magnitude** at the lowest load studied compared
   with an even split, and stays ahead at every load. Degree- and spectral-type graph measures are no better than splitting evenly.
-- **The routing policy stops mattering once nodes saturate.** At low load, a state-aware re-routing
-  heuristic outperforms static K-shortest-path routing. At high load, blocking is dominated by node
-  switching capacity and the RMSA variants converge within their confidence intervals.
+- **The best routing policy depends on load.** At low load, a state-aware re-routing heuristic blocks
+  about a third less traffic than static K-shortest-path routing. At high load the ranking reverses
+  slightly, and the gaps between routing policies become small compared with the effect of node
+  dimensioning (paired tests over common random numbers).
 - **Physical-layer modelling changes the answer.** Replacing a conservative reach table with a GN-model
   QoT estimate lets the network carry noticeably more load at the same blocking. The physical-layer
   assumption is as consequential as the choice of routing algorithm.
@@ -120,10 +121,10 @@ use five seeds per point with 95 % confidence intervals.
 - **Bottlenecks are geographic.** Under forward-looking traffic, blocking concentrates on long
   inter-island corridors and on long-haul, high-rate demands, which points to targeted rather than
   network-wide upgrades.
-- **Engineering quality.** Nine automated regression tests pass, including bit-identical
-  reproduction of the earlier model and graph measures that match MATLAB reference implementations to
-  numerical precision. The restructured engine runs roughly an order of magnitude faster, which makes
-  multi-seed sweeps and simulation-in-the-loop optimisation practical.
+- **Engineering quality.** Nine automated regression tests pass in MATLAB R2026a, including
+  reproduction of the earlier model to ten significant digits and graph measures that match MATLAB
+  reference implementations to numerical precision. A full 10 000-request simulation takes seconds,
+  which makes multi-seed sweeps and simulation-in-the-loop optimisation practical.
 
 <p align="center">
   <img src="docs/figures/oxc_allocation_relative.png" width="640" alt="Relative bandwidth blocking versus relative offered load for three OXC allocation families">
@@ -140,7 +141,8 @@ use five seeds per point with 95 % confidence intervals.
 [`demo/demo_flexgrid_sdm_blocking.m`](demo/demo_flexgrid_sdm_blocking.m) reproduces, on a generic
 6-node mesh, the idea at the heart of the study: **why spectrum granularity and spatial channels change
 blocking in a transparent network.** It compares a 50 GHz fixed grid, a 12.5 GHz flex-grid and a
-flex-grid over 3-core fibre, all fed with identical traffic. It uses base MATLAB or GNU Octave only, and
+flex-grid over 3-core fibre, all fed with identical traffic. It uses base MATLAB or GNU Octave only (the
+figure was produced in MATLAB R2026a), and
 its topology, traffic and rules are generic, not those of the study.
 
 ```matlab

@@ -69,7 +69,7 @@ path_links = cell(N);
 for s = 1:N
     for d = 1:N
         u = s; pl = [];
-        while u ~= d, v = nxt(u,d); pl(end+1) = lid(u,v); u = v; end %#ok<AGROW>
+        while u ~= d, v = nxt(u,d); pl(end+1) = lid(u,v); u = v; end %#ok<SAGROW>
         path_links{s,d} = pl;
     end
 end
@@ -118,7 +118,7 @@ for il = 1:numel(loads)
                 if r > n_warm, blocked = blocked + bw(r); end
             else
                 S(pl, s0:s0+n-1, core) = true;
-                act(end+1,:) = [t + t_hold(r), core, s0, n, r]; %#ok<AGROW>
+                act(end+1,:) = [t + t_hold(r), core, s0, n, r]; %#ok<SAGROW>
             end
         end
         BBP(c, il) = blocked / offered;
@@ -127,15 +127,16 @@ for il = 1:numel(loads)
 end
 
 %% Plot ---------------------------------------------------------------------
-fig = figure('Color', 'w', 'Position', [100 100 760 440]);
+fig = figure('Color', 'w', 'Position', [100 100 760 480]);
 mk = {'s-', 'o-', 'd-'};
 for c = 1:numel(cases)
-    semilogy(loads, max(BBP(c,:), 1e-5), mk{c}, 'LineWidth', 2); hold on;
+    y = BBP(c,:); y(y <= 0) = NaN;            % zero blocking cannot be drawn on a log axis
+    semilogy(loads, y, mk{c}, 'LineWidth', 2); hold on;
 end
 grid on; box on;
 xlabel('Offered load (Erlang)');
 ylabel('Bandwidth blocking probability');
-title('Fixed grid vs flex-grid vs flex-grid + SDM (generic 6-node mesh; zero shown at 10^{-5})');
+title({'Fixed grid vs flex-grid vs flex-grid + SDM', '(generic 6-node mesh; points with zero blocking omitted)'});
 legend({cases.name}, 'Location', 'southeast');
 ylim([1e-5 1]);
 
