@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you refer to this work, please cite it as below."
+title: "Modelling and Optimization of Traffic Route Graph Based on Flex-Grid and Space-Division Multiplexing (SDM) in Modern Optical Communication Systems (Transparent Optical Networks)"
+type: software
+authors:
+  - family-names: "Sabilly"
+    given-names: "Ikhlas"
+    email: "ikhlas.sabilly@gmail.com"
+version: "1.0.0"
+date-released: "2026-10-26"
+license-url: "LICENSE"
+keywords:
+  - elastic optical networks
+  - flex-grid
+  - space-division multiplexing
+  - multi-core fibre
+  - transparent optical networks
+  - RMSA
+  - GN model
+  - OXC dimensioning
+  - graph centrality
+  - metaheuristic optimization
+abstract: >-
+  A discrete-event study of routing, modulation and spectrum assignment on the 19-node IDNet optical
+  backbone with flex-grid, C+L multi-band and multi-core (SDM) fibre, GN-model quality of transmission,
+  finite transceiver and OXC resources, graph-based node dimensioning and simulation-in-the-loop
+  metaheuristic optimisation.
